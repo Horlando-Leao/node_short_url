@@ -9,8 +9,28 @@ router.get('/', function(req, res, next) {
 /* GET home page. */
 router.post('/new', function(req, res, next) {
   const url = req.body.url;
-  console.log(url)
-  res.send(url)
+
+  const domain = 'http://localhost:3000/';
+  const code = generateURL();
+  
+  res.send(domain+code);
 });
 
+
+
+
+//FUNCTIONS
+function generateURL() {
+
+  var text = "";
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+  for (let index = 0; index < 5; index++){
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+}
 module.exports = router;
+
+
+
