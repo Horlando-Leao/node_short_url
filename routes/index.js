@@ -1,19 +1,27 @@
 var express = require('express');
 var router = express.Router();
+const Link = require('../models/links');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Encurtador de URL' });
 });
 
-/* GET home page. */
-router.post('/new', function(req, res, next) {
+/* POST NEW LINK */
+router.post('/new', async (req, res, next) => {
   const url = req.body.url;
 
   const domain = 'http://localhost:3000/';
   const code = generateURL();
   
-  res.send(domain+code);
+  const result = await Link.create({
+    url,
+    code
+  });
+
+  res.render('stats', result);
+  //res.send(domain+code);
 });
 
 
