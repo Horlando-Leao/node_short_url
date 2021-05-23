@@ -28,7 +28,7 @@
                 Domínio de acesso:
             </b>
             <b>
-                <%= process.env.DOMAINDEV %>+code
+                <%= process.env.DOMAIN %>+code
             </b>
         </p>
         <table>
@@ -36,12 +36,16 @@
                 <th>url</th>
                 <th>code</th>
                 <th>hits</th>
+                <th>stats</th>
               </tr>
             <% for(var i=0; i < data[0].length; i++) { %>
                <tr>
                  <td><%= data[0][i].url %></td>
                  <td><%= data[0][i].code %></td>
                  <td><%= data[0][i].hits %></td>
+                 <td>
+                     <a href="<%= process.env.DOMAIN %><%= data[0][i].code %>/stats"><%= process.env.DOMAIN %><%= data[0][i].code %>/stats</a>
+                </td>
                </tr>
             <% } %>
             </table>
