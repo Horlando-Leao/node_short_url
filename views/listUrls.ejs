@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Encurtador Node</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,26 +16,40 @@
   <body>
     <div class="container">
       <div class="header">
-        <img src="images/modem_or_router.png" alt="<%= title %>" class="icon">
+        <img src="../images/modem_or_router.png" alt="Encurtardor Node" class="icon">
         <h1>
-          <%= title %>
+            Encurtador Node
         </h1>
-      
+        <p>Estatísticas de acesso</p>
       </div>
-      <div class="content">
-        <form action="/new" method="post">
-          <div class="mb-3 input-group">
-            <input placeholder="Digite a URL para encurtar" name="url" class="form-control"type="text">
-            <div class="input-group-apend">
-              <button class="btn btn-primary" type="submit">Encurtar</button>
-            </div>
-          </div>
-        </form>
-        
+      <div class="stats">
+        <p>
+            <b>
+                Domínio de acesso:
+            </b>
+            <b>
+                <%= process.env.DOMAINDEV %>+code
+            </b>
+        </p>
+        <table>
+            <tr>
+                <th>url</th>
+                <th>code</th>
+                <th>hits</th>
+              </tr>
+            <% for(var i=0; i < data[0].length; i++) { %>
+               <tr>
+                 <td><%= data[0][i].url %></td>
+                 <td><%= data[0][i].code %></td>
+                 <td><%= data[0][i].hits %></td>
+               </tr>
+            <% } %>
+            </table>
+            
+        </div>
+        <a href="/" class="btn btn-primary" >Encurtar nova URL</a>
       </div>
-      <a class="btn btn-primary" href="/list">Listar urls</a>
     </div>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   </body>

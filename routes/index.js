@@ -2,6 +2,17 @@ var express = require('express');
 var router = express.Router();
 const Link = require('../models/links');
 
+router.get('/list', async(req, res, next) =>{
+  const code = req.params.code;
+
+  const result = await Link.findAll({});
+  if(!result){
+    return res.sendStatus(404);
+  }
+  res.render('listUrls', data = [result, result.dataValues]);
+});
+
+
 router.get('/:code/stats', async(req, res, next) =>{
   const code = req.params.code;
 
@@ -11,7 +22,6 @@ router.get('/:code/stats', async(req, res, next) =>{
   }
   res.render('stats', result.dataValues);
 });
-
 
 
 router.get('/:code', async (req, res, next) =>{
