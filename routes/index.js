@@ -37,8 +37,14 @@ router.get('/:code', async (req, res, next) =>{
   res.redirect(result.url);
 });
 
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/:login/:pass', function(req, res, next) {
+  const login = req.params.login;
+  const pass = req.params.pass;
+  if(login != process.env.LOGIN || pass != process.env.PASS ){
+    res.sendStatus(404);
+  }
   res.render('index', { title: 'Encurtador de URL' });
 });
 
