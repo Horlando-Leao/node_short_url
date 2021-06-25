@@ -44,14 +44,14 @@
                  <td><%= data[0][i].code %></td>
                  <td><%= data[0][i].hits %></td>
                  <td>
-                     <a href="<%= process.env.DOMAIN %><%= data[0][i].code %>/stats"><%= process.env.DOMAIN %><%= data[0][i].code %>/stats</a>
+                     <a href="<%= process.env.DOMAIN %><%= data[0][i].code %>/stats">status</a>
                 </td>
                </tr>
             <% } %>
             </table>
             
         </div>
-        <a href="/ksnjeoajs/GhbjUI84878" class="btn btn-primary" >Encurtar nova URL</a>
+        <a href="/<%= process.env.LOGIN %>/<%= process.env.PASS %>" class="btn btn-primary" >Encurtar nova URL</a>
       </div>
     </div>
 
